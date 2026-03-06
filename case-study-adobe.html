@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adobe — Krishiosity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+::selection{background:rgba(212,148,58,0.25);color:#F5F0E8}
+body{
+  font-family:'Inter',sans-serif;
+  background:#1A2B1A;
+  color:#D4CCBC;
+  line-height:1.6;
+}
+/* NAV */
+.cs-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;border-bottom:1px solid rgba(80,110,80,0.3);
+  position:sticky;top:0;background:rgba(26,43,26,0.95);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:100;
+}
+.cs-nav a{
+  font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;
+  letter-spacing:0.15em;color:rgba(200,192,176,0.4);text-decoration:none;
+  transition:color 0.2s;
+}
+.cs-nav a:hover{color:#D4943A}
+.cs-nav .brand{color:#F5F0E8;font-size:12px;font-weight:500;letter-spacing:0.25em}
+.cs-nav .links{display:flex;gap:24px}
+/* SECTIONS */
+section{padding:56px 64px;border-bottom:1px solid rgba(80,110,80,0.3)}
+section:last-child{border-bottom:none;padding-bottom:80px}
+.label{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:400;
+  text-transform:uppercase;letter-spacing:0.2em;color:#D4943A;margin-bottom:16px;
+}
+h1{
+  font-family:'Playfair Display',serif;font-size:52px;font-weight:800;
+  color:#F5F0E8;line-height:1.1;margin-bottom:10px;
+}
+h1 em{color:#D4943A;font-weight:700;font-style:italic}
+.subtitle{font-size:18px;color:rgba(200,192,176,0.5);max-width:580px;line-height:1.7;font-weight:300}
+.meta-cards{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap}
+.meta-card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:10px;padding:14px 20px;
+}
+.meta-card .mc-label{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;color:rgba(200,192,176,0.3);margin-bottom:4px;
+}
+.meta-card .mc-value{font-size:15px;font-weight:600;color:#F5F0E8}
+/* CARDS */
+.card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:12px;padding:28px;
+}
+.gold-card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:12px;padding:28px;border-top:3px solid #D4943A;
+}
+.num{
+  font-family:'DM Mono',monospace;font-size:28px;font-weight:300;
+  color:rgba(200,192,176,0.3);line-height:1;
+}
+.sub-label{
+  font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;
+  letter-spacing:0.15em;color:rgba(200,192,176,0.3);margin-bottom:14px;
+}
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+/* BROWSER MOCKUP */
+.browser{
+  background:rgba(15,22,15,0.6);border-radius:14px;
+  border:1px solid rgba(80,110,80,0.3);overflow:hidden;
+}
+.browser-chrome{
+  padding:10px 16px;border-bottom:1px solid rgba(80,110,80,0.3);
+  display:flex;align-items:center;gap:8px;
+}
+.browser-dots{display:flex;gap:6px}
+.browser-dots span{width:10px;height:10px;border-radius:50%}
+.browser-url{
+  flex:1;background:rgba(42,62,42,0.4);border-radius:6px;padding:5px 14px;
+  font-size:11px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;
+}
+.browser-body{display:grid;height:320px}
+/* JOURNEY */
+.journey-card{text-align:center}
+.journey-card .stage{
+  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+  color:#F5F0E8;margin:10px 0 6px;
+}
+.journey-card .desc{font-size:12px;color:rgba(200,192,176,0.5);line-height:1.55;margin-bottom:14px}
+.journey-card .feel{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;margin-bottom:8px;
+}
+.journey-card .touch{
+  padding:5px 8px;border-radius:5px;font-family:'DM Mono',monospace;
+  font-size:9px;color:rgba(200,192,176,0.3);display:inline-block;
+  background:rgba(42,62,42,0.4);
+}
+.journey-card.highlight .feel{color:#D4943A}
+.journey-card.highlight .touch{background:rgba(212,148,58,0.08)}
+/* STATS */
+.stat{
+  padding:14px 0;border-bottom:1px solid rgba(80,110,80,0.3);
+  display:flex;gap:16px;align-items:baseline;
+}
+.stat:last-child{border-bottom:none}
+.stat-num{
+  font-family:'Playfair Display',serif;font-size:30px;font-weight:700;
+  color:#D4943A;min-width:54px;
+}
+.stat-desc{font-size:14px;color:rgba(200,192,176,0.5);line-height:1.55}
+/* METHODS */
+.method{display:flex;gap:12px;margin-bottom:16px;align-items:center}
+.method .dot{width:4px;height:4px;border-radius:50%;background:#D4943A;flex-shrink:0}
+.method span{font-size:14px;color:#D4CCBC;line-height:1.5}
+/* GAPS */
+.gap{
+  padding:14px 0;border-bottom:1px solid rgba(80,110,80,0.3);
+  font-size:14px;color:#D4CCBC;line-height:1.65;display:flex;gap:10px;
+}
+.gap .bang{color:#D4943A;font-family:'DM Mono',monospace;font-size:10px;margin-top:3px;flex-shrink:0}
+/* PAIN POINTS */
+.pain{display:flex;flex-direction:column;gap:10px}
+.pain-item{display:flex;gap:16px;align-items:flex-start}
+.pain-item p{font-size:14px;color:#D4CCBC;line-height:1.65;padding-top:6px}
+/* QUOTE */
+.quote{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:22px;
+  color:rgba(200,192,176,0.5);line-height:1.55;padding:24px 0;
+  border-top:1px solid rgba(80,110,80,0.3);
+}
+/* THEN/NOW */
+.then-now{display:flex;gap:10px;margin-top:20px}
+.then-now .tn-card{flex:1;padding:16px 20px}
+.then-now .arrow{display:flex;align-items:center;color:rgba(200,192,176,0.3)}
+.tn-label{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;margin-bottom:6px;
+}
+.tn-text{font-size:13px}
+/* ANIMATE */
+.reveal{opacity:0;transform:translateY(24px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* PERSONA */
+.persona{font-size:16px;font-weight:500;color:#F5F0E8;line-height:1.6;margin-bottom:28px}
+/* RESPONSIVE */
+@media(max-width:900px){
+  section{padding:40px 24px}
+  .grid-2,.grid-5{grid-template-columns:1fr}
+  h1{font-size:36px}
+  .cs-nav{padding:12px 24px}
+  .cs-nav .links{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="cs-nav">
+  <a href="https://krishiosity.com" class="brand">KRISHIOSITY</a>
+  <div class="links">
+    <a href="https://krishiosity.com#about">About</a>
+    <a href="https://krishiosity.com#work">Work</a>
+    <a href="https://krishiosity.com#experiments">Experiments</a>
+  </div>
+</nav>
+
+<section>
+  <div class="label">Case Study</div>
+  <h1>Adobe <em>Checkout</em></h1>
+  <p class="subtitle">Multi-variant experimentation on checkout orientation, creating design directions that drove measurable revenue impact across Adobe's commerce platform.</p>
+  <div class="meta-cards"><div class="meta-card"><div class="mc-label">Impact</div><div class="mc-value">$1M+ ARR</div></div><div class="meta-card"><div class="mc-label">Variants</div><div class="mc-value">3 directions</div></div><div class="meta-card"><div class="mc-label">Scope</div><div class="mc-value">Commerce × Product × A.com</div></div></div>
+</section>
+
+<section class="reveal">
+  <div class="label">Product Visual</div>
+  <div class="browser">
+    <div class="browser-chrome">
+      <div class="browser-dots"><span style="background:#FF5F57"></span><span style="background:#FFBD2E"></span><span style="background:#28C840"></span></div>
+      <div class="browser-url">adobe.com/checkout</div>
+    </div>
+    <div class="browser-body" style="grid-template-columns:1fr 280px">
+      
+<div style="padding:24px">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><div style="width:28px;height:28px;background:#FA0F00;border-radius:5px;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24"><polygon points="12,2 22,22 2,22" fill="#FFF"/></svg></div><span style="font-weight:600;font-size:13px;color:#F5F0E8">Adobe</span><div style="margin-left:auto;display:flex;gap:4px"><span style="width:28px;height:3px;border-radius:2px;background:#D4943A;display:inline-block"></span><span style="width:28px;height:3px;border-radius:2px;background:#D4943A;display:inline-block"></span><span style="width:28px;height:3px;border-radius:2px;background:rgba(200,192,176,0.3);display:inline-block"></span></div></div>
+  <div style="background:rgba(212,148,58,0.07);border-radius:8px;padding:12px 16px;margin-bottom:18px;border:1px solid rgba(212,148,58,0.12);display:flex;gap:12px;align-items:center"><div style="width:32px;height:32px;border-radius:8px;background:rgba(212,148,58,0.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:#D4943A">✓</div><div><div style="font-size:12px;font-weight:600;color:#F5F0E8;margin-bottom:1px">Creative Cloud — All Apps</div><div style="font-size:10px;color:rgba(200,192,176,0.3)">20+ apps including Photoshop, Illustrator</div></div></div>
+  <div style="margin-bottom:14px"><div style="font-size:9px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px">Email address</div><div style="height:36px;background:rgba(42,62,42,0.4);border:1px solid rgba(80,110,80,0.3);border-radius:6px;display:flex;align-items:center;padding:0 12px"><div style="height:4px;width:150px;background:rgba(80,110,80,0.3);border-radius:2px"></div></div></div>
+  <div style="margin-bottom:14px"><div style="font-size:9px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px">Payment method</div><div style="height:36px;background:rgba(42,62,42,0.4);border:1px solid rgba(80,110,80,0.3);border-radius:6px;display:flex;align-items:center;padding:0 12px"><div style="height:4px;width:110px;background:rgba(80,110,80,0.3);border-radius:2px"></div></div></div>
+  <div style="height:40px;background:#D4943A;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-top:8px"><span style="color:#1A2B1A;font-weight:600;font-size:13px">Complete Purchase</span></div>
+</div>
+<div style="border-left:1px solid rgba(80,110,80,0.3);padding:20px">
+  <div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(200,192,176,0.3);margin-bottom:14px">Order Summary</div>
+  <div style="background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);border-radius:8px;padding:14px;margin-bottom:14px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;font-weight:500;color:#F5F0E8">Creative Cloud</span><span style="font-size:12px;color:rgba(200,192,176,0.5)">$59.99</span></div><div style="font-size:9px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace">Annual, billed monthly</div></div>
+  <div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(200,192,176,0.3);margin-bottom:10px">Orientation</div>
+  <div style="padding:9px 12px;border-radius:6px;margin-bottom:5px;background:rgba(42,62,42,0.4);border:1px solid rgba(80,110,80,0.3);display:flex;justify-content:space-between"><span style="font-size:11px;color:rgba(200,192,176,0.5)">What's included</span><span style="color:rgba(200,192,176,0.3)">→</span></div>
+  <div style="padding:9px 12px;border-radius:6px;margin-bottom:5px;background:rgba(42,62,42,0.4);border:1px solid rgba(80,110,80,0.3);display:flex;justify-content:space-between"><span style="font-size:11px;color:rgba(200,192,176,0.5)">Compare plans</span><span style="color:rgba(200,192,176,0.3)">→</span></div>
+  <div style="padding:9px 12px;border-radius:6px;margin-bottom:5px;background:rgba(42,62,42,0.4);border:1px solid rgba(80,110,80,0.3);display:flex;justify-content:space-between"><span style="font-size:11px;color:rgba(200,192,176,0.5)">Student discount</span><span style="color:rgba(200,192,176,0.3)">→</span></div>
+  <div style="margin-top:14px;padding:6px 10px;background:rgba(212,148,58,0.07);border-radius:6px;display:flex;align-items:center;gap:6px"><div style="width:5px;height:5px;border-radius:50%;background:#D4943A"></div><span style="font-family:'DM Mono',monospace;font-size:9px;color:#D4943A">VARIANT B — ORIENTATION</span></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="label">User Problem</div>
+  <div class="grid-2">
+  <div>
+    <div class="sub-label">Persona</div>
+    <p class="persona">Adobe customers completing purchases across Creative Cloud, Document Cloud, and Experience Cloud products.</p>
+    <div class="quote">"I wasn't sure if I was getting the right plan until I was already at payment."</div>
+  </div>
+  <div class="pain"><div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">01</div><p>Checkout flow inconsistencies across different Adobe products</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">02</div><p>Friction points causing drop-off at key conversion stages</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">03</div><p>Lack of clear orientation during the purchase decision</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">04</div><p>Disconnect between product pages and checkout experience</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">User Journey</div>
+  <div class="grid-5"><div class="journey-card card">
+  <div class="num">01</div>
+  <div class="stage">Browse</div>
+  <p class="desc">Explores Adobe product pages</p>
+  <div class="feel">Interested</div>
+  <div class="touch">Landing pages</div>
+</div>
+<div class="journey-card card">
+  <div class="num">02</div>
+  <div class="stage">Compare</div>
+  <p class="desc">Evaluates plan options side by side</p>
+  <div class="feel">Uncertain</div>
+  <div class="touch">Pricing table</div>
+</div>
+<div class="journey-card card">
+  <div class="num">03</div>
+  <div class="stage">Decide</div>
+  <p class="desc">Selects a plan and initiates checkout</p>
+  <div class="feel">Committed</div>
+  <div class="touch">Plan CTA</div>
+</div>
+<div class="journey-card gold-card highlight">
+  <div class="num">04</div>
+  <div class="stage">Checkout</div>
+  <p class="desc">Completes purchase with orientation cues</p>
+  <div class="feel">Reassured</div>
+  <div class="touch">Checkout flow</div>
+</div>
+<div class="journey-card card">
+  <div class="num">05</div>
+  <div class="stage">Confirm</div>
+  <p class="desc">Receives confirmation and onboarding</p>
+  <div class="feel">Relieved</div>
+  <div class="touch">Confirmation</div>
+</div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">Research</div>
+  <div class="grid-2">
+  <div><div class="sub-label">Methods</div><div class="method"><span class="dot"></span><span>Analysis of historical data sets and past tests</span></div><div class="method"><span class="dot"></span><span>Past A/B test wins cataloged with AI summaries</span></div><div class="method"><span class="dot"></span><span>Stakeholder alignment: Commerce + Product + A.com</span></div><div class="method"><span class="dot"></span><span>Coverage mapping with AI-assisted pattern detection</span></div></div>
+  <div><div class="sub-label">Key Findings</div><div class="stat"><span class="stat-num">18%</span><span class="stat-desc">Reduced cart abandonment with orientation cues</span></div><div class="stat"><span class="stat-num">#1</span><span class="stat-desc">Cross-team alignment was the biggest blocker</span></div><div class="stat"><span class="stat-num">AI</span><span class="stat-desc">Summaries revealed overlooked winning patterns</span></div><div class="stat"><span class="stat-num">2×</span><span class="stat-desc">Redundant experiments from coverage gaps</span></div></div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">Notes &amp; Reflection</div>
+  <div class="grid-2">
+  <div>
+    <div class="sub-label">Gaps Identified</div>
+    <div class="gap"><span class="bang">!</span>Analyze → Define → Alignment pipeline had handoff friction</div><div class="gap"><span class="bang">!</span>AI coverage tools were underutilized for synthesizing past results</div><div class="gap"><span class="bang">!</span>Commerce + Product + A.com alignment meetings happened too late</div><div class="gap"><span class="bang">!</span>No shared framework for prioritizing which experiments to run</div>
+  </div>
+  <div>
+    <div class="sub-label">How I'd Improve Today</div>
+    <div class="gold-card" style="margin-bottom:20px">
+      <p style="font-size:15px;line-height:1.8">I'd build a <strong style='color:#F5F0E8'>unified experimentation dashboard</strong> giving all three teams real-time visibility. AI wouldn't just summarize — it would <strong style='color:#F5F0E8'>proactively recommend experiments</strong>. The pipeline becomes a continuous loop with <strong style='color:#F5F0E8'>shared OKRs</strong> driving prioritization.</p>
+    </div>
+    <div class="then-now">
+      <div class="card tn-card">
+        <div class="tn-label" style="color:rgba(200,192,176,0.3)">Then</div>
+        <div class="tn-text" style="color:rgba(200,192,176,0.5)">Linear handoffs, late alignment</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="card tn-card" style="border-top:2px solid #D4943A">
+        <div class="tn-label" style="color:#D4943A">Now</div>
+        <div class="tn-text" style="color:#D4CCBC">Continuous loops, proactive AI, shared OKRs</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

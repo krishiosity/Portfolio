@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellsfargo — Krishiosity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+::selection{background:rgba(212,148,58,0.25);color:#F5F0E8}
+body{
+  font-family:'Inter',sans-serif;
+  background:#1A2B1A;
+  color:#D4CCBC;
+  line-height:1.6;
+}
+/* NAV */
+.cs-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;border-bottom:1px solid rgba(80,110,80,0.3);
+  position:sticky;top:0;background:rgba(26,43,26,0.95);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:100;
+}
+.cs-nav a{
+  font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;
+  letter-spacing:0.15em;color:rgba(200,192,176,0.4);text-decoration:none;
+  transition:color 0.2s;
+}
+.cs-nav a:hover{color:#D4943A}
+.cs-nav .brand{color:#F5F0E8;font-size:12px;font-weight:500;letter-spacing:0.25em}
+.cs-nav .links{display:flex;gap:24px}
+/* SECTIONS */
+section{padding:56px 64px;border-bottom:1px solid rgba(80,110,80,0.3)}
+section:last-child{border-bottom:none;padding-bottom:80px}
+.label{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:400;
+  text-transform:uppercase;letter-spacing:0.2em;color:#D4943A;margin-bottom:16px;
+}
+h1{
+  font-family:'Playfair Display',serif;font-size:52px;font-weight:800;
+  color:#F5F0E8;line-height:1.1;margin-bottom:10px;
+}
+h1 em{color:#D4943A;font-weight:700;font-style:italic}
+.subtitle{font-size:18px;color:rgba(200,192,176,0.5);max-width:580px;line-height:1.7;font-weight:300}
+.meta-cards{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap}
+.meta-card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:10px;padding:14px 20px;
+}
+.meta-card .mc-label{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;color:rgba(200,192,176,0.3);margin-bottom:4px;
+}
+.meta-card .mc-value{font-size:15px;font-weight:600;color:#F5F0E8}
+/* CARDS */
+.card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:12px;padding:28px;
+}
+.gold-card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:12px;padding:28px;border-top:3px solid #D4943A;
+}
+.num{
+  font-family:'DM Mono',monospace;font-size:28px;font-weight:300;
+  color:rgba(200,192,176,0.3);line-height:1;
+}
+.sub-label{
+  font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;
+  letter-spacing:0.15em;color:rgba(200,192,176,0.3);margin-bottom:14px;
+}
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+/* BROWSER MOCKUP */
+.browser{
+  background:rgba(15,22,15,0.6);border-radius:14px;
+  border:1px solid rgba(80,110,80,0.3);overflow:hidden;
+}
+.browser-chrome{
+  padding:10px 16px;border-bottom:1px solid rgba(80,110,80,0.3);
+  display:flex;align-items:center;gap:8px;
+}
+.browser-dots{display:flex;gap:6px}
+.browser-dots span{width:10px;height:10px;border-radius:50%}
+.browser-url{
+  flex:1;background:rgba(42,62,42,0.4);border-radius:6px;padding:5px 14px;
+  font-size:11px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;
+}
+.browser-body{display:grid;height:320px}
+/* JOURNEY */
+.journey-card{text-align:center}
+.journey-card .stage{
+  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+  color:#F5F0E8;margin:10px 0 6px;
+}
+.journey-card .desc{font-size:12px;color:rgba(200,192,176,0.5);line-height:1.55;margin-bottom:14px}
+.journey-card .feel{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;margin-bottom:8px;
+}
+.journey-card .touch{
+  padding:5px 8px;border-radius:5px;font-family:'DM Mono',monospace;
+  font-size:9px;color:rgba(200,192,176,0.3);display:inline-block;
+  background:rgba(42,62,42,0.4);
+}
+.journey-card.highlight .feel{color:#D4943A}
+.journey-card.highlight .touch{background:rgba(212,148,58,0.08)}
+/* STATS */
+.stat{
+  padding:14px 0;border-bottom:1px solid rgba(80,110,80,0.3);
+  display:flex;gap:16px;align-items:baseline;
+}
+.stat:last-child{border-bottom:none}
+.stat-num{
+  font-family:'Playfair Display',serif;font-size:30px;font-weight:700;
+  color:#D4943A;min-width:54px;
+}
+.stat-desc{font-size:14px;color:rgba(200,192,176,0.5);line-height:1.55}
+/* METHODS */
+.method{display:flex;gap:12px;margin-bottom:16px;align-items:center}
+.method .dot{width:4px;height:4px;border-radius:50%;background:#D4943A;flex-shrink:0}
+.method span{font-size:14px;color:#D4CCBC;line-height:1.5}
+/* GAPS */
+.gap{
+  padding:14px 0;border-bottom:1px solid rgba(80,110,80,0.3);
+  font-size:14px;color:#D4CCBC;line-height:1.65;display:flex;gap:10px;
+}
+.gap .bang{color:#D4943A;font-family:'DM Mono',monospace;font-size:10px;margin-top:3px;flex-shrink:0}
+/* PAIN POINTS */
+.pain{display:flex;flex-direction:column;gap:10px}
+.pain-item{display:flex;gap:16px;align-items:flex-start}
+.pain-item p{font-size:14px;color:#D4CCBC;line-height:1.65;padding-top:6px}
+/* QUOTE */
+.quote{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:22px;
+  color:rgba(200,192,176,0.5);line-height:1.55;padding:24px 0;
+  border-top:1px solid rgba(80,110,80,0.3);
+}
+/* THEN/NOW */
+.then-now{display:flex;gap:10px;margin-top:20px}
+.then-now .tn-card{flex:1;padding:16px 20px}
+.then-now .arrow{display:flex;align-items:center;color:rgba(200,192,176,0.3)}
+.tn-label{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;margin-bottom:6px;
+}
+.tn-text{font-size:13px}
+/* ANIMATE */
+.reveal{opacity:0;transform:translateY(24px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* PERSONA */
+.persona{font-size:16px;font-weight:500;color:#F5F0E8;line-height:1.6;margin-bottom:28px}
+/* RESPONSIVE */
+@media(max-width:900px){
+  section{padding:40px 24px}
+  .grid-2,.grid-5{grid-template-columns:1fr}
+  h1{font-size:36px}
+  .cs-nav{padding:12px 24px}
+  .cs-nav .links{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="cs-nav">
+  <a href="https://krishiosity.com" class="brand">KRISHIOSITY</a>
+  <div class="links">
+    <a href="https://krishiosity.com#about">About</a>
+    <a href="https://krishiosity.com#work">Work</a>
+    <a href="https://krishiosity.com#experiments">Experiments</a>
+  </div>
+</nav>
+
+<section>
+  <div class="label">Case Study</div>
+  <h1>Wells <em>Fargo</em></h1>
+  <p class="subtitle">Redesigning merchant services dashboards and mortgage loan tools through systematic audit, connection, and simplification of disconnected financial systems.</p>
+  <div class="meta-cards"><div class="meta-card"><div class="mc-label">Products</div><div class="mc-value">2 systems</div></div><div class="meta-card"><div class="mc-label">Focus</div><div class="mc-value">Dashboard + Mortgage</div></div><div class="meta-card"><div class="mc-label">Framework</div><div class="mc-value">Audit → Connect → Simplify</div></div></div>
+</section>
+
+<section class="reveal">
+  <div class="label">Product Visual</div>
+  <div class="browser">
+    <div class="browser-chrome">
+      <div class="browser-dots"><span style="background:#FF5F57"></span><span style="background:#FFBD2E"></span><span style="background:#28C840"></span></div>
+      <div class="browser-url">wellsfargo.com/merchant/dashboard</div>
+    </div>
+    <div class="browser-body" style="grid-template-columns:52px 1fr 260px">
+      
+<div style="border-right:1px solid rgba(80,110,80,0.3);padding:14px 0;display:flex;flex-direction:column;align-items:center;gap:4px">
+  <div style="width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(200,192,176,0.3)">◉</div>
+  <div style="width:34px;height:34px;border-radius:8px;background:rgba(212,148,58,0.08);display:flex;align-items:center;justify-content:center;font-size:14px;color:#D4943A">▦</div>
+  <div style="width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(200,192,176,0.3)">◈</div>
+  <div style="width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(200,192,176,0.3)">⊞</div>
+</div>
+<div style="padding:18px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><div><div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(200,192,176,0.3);margin-bottom:3px">Merchant Services</div><div style="font-size:15px;font-weight:600;color:#F5F0E8">Dashboard Overview</div></div><div style="display:flex;gap:4px"><span style="padding:4px 10px;border-radius:5px;background:rgba(42,62,42,0.5);color:rgba(200,192,176,0.3);font-size:10px;font-family:'DM Mono',monospace">Today</span><span style="padding:4px 10px;border-radius:5px;background:rgba(42,62,42,0.5);color:rgba(200,192,176,0.3);font-size:10px;font-family:'DM Mono',monospace">Week</span><span style="padding:4px 10px;border-radius:5px;background:#D4943A;color:#1A2B1A;font-size:10px;font-family:'DM Mono',monospace;font-weight:500">Month</span></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">
+    <div style="background:rgba(42,62,42,0.4);border-radius:8px;padding:11px;border:1px solid rgba(80,110,80,0.3)"><div style="font-size:8px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px">Transactions</div><div style="font-size:18px;font-weight:700;color:#F5F0E8;font-family:'Playfair Display',serif">12,847</div><div style="font-size:10px;color:#6ABF7B;font-family:'DM Mono',monospace;margin-top:2px">+8.3%</div></div>
+    <div style="background:rgba(42,62,42,0.4);border-radius:8px;padding:11px;border:1px solid rgba(80,110,80,0.3)"><div style="font-size:8px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px">Revenue</div><div style="font-size:18px;font-weight:700;color:#F5F0E8;font-family:'Playfair Display',serif">$184K</div><div style="font-size:10px;color:#6ABF7B;font-family:'DM Mono',monospace;margin-top:2px">+12.1%</div></div>
+    <div style="background:rgba(42,62,42,0.4);border-radius:8px;padding:11px;border:1px solid rgba(80,110,80,0.3)"><div style="font-size:8px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px">Avg Ticket</div><div style="font-size:18px;font-weight:700;color:#F5F0E8;font-family:'Playfair Display',serif">$14.32</div><div style="font-size:10px;color:#E07060;font-family:'DM Mono',monospace;margin-top:2px">-2.4%</div></div>
+  </div>
+  <div style="background:rgba(42,62,42,0.3);border-radius:8px;border:1px solid rgba(80,110,80,0.3);padding:12px;height:110px"><div style="font-size:9px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Transaction Volume</div><svg width="100%" height="65" viewBox="0 0 400 65"><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4943A" stop-opacity="0.2"/><stop offset="100%" stop-color="#D4943A" stop-opacity="0"/></linearGradient></defs><path d="M0,55 L40,45 L80,50 L120,30 L160,35 L200,18 L240,22 L280,12 L320,20 L360,8 L400,16" fill="none" stroke="#D4943A" stroke-width="2"/><path d="M0,55 L40,45 L80,50 L120,30 L160,35 L200,18 L240,22 L280,12 L320,20 L360,8 L400,16 L400,65 L0,65 Z" fill="url(#cg)"/></svg></div>
+</div>
+<div style="border-left:1px solid rgba(80,110,80,0.3);padding:16px">
+  <div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(200,192,176,0.3);margin-bottom:12px">Pain Points → Solutions</div>
+  <div style="background:rgba(42,62,42,0.4);border-radius:8px;padding:11px;margin-bottom:7px;border:1px solid rgba(80,110,80,0.3);border-left:3px solid #D4943A"><div style="font-size:11px;font-weight:600;color:#F5F0E8;margin-bottom:4px">High chargeback rate</div><div style="display:flex;align-items:center;gap:5px;padding:3px 8px;background:rgba(212,148,58,0.07);border-radius:4px;width:fit-content"><span style="font-size:10px;color:#D4943A">→</span><span style="font-size:10px;color:#D4943A;font-weight:500">Enable fraud alerts</span></div></div>
+  <div style="background:rgba(42,62,42,0.4);border-radius:8px;padding:11px;margin-bottom:7px;border:1px solid rgba(80,110,80,0.3);border-left:3px solid #8B7B4B"><div style="font-size:11px;font-weight:600;color:#F5F0E8;margin-bottom:4px">Slow settlement times</div><div style="display:flex;align-items:center;gap:5px;padding:3px 8px;background:rgba(212,148,58,0.07);border-radius:4px;width:fit-content"><span style="font-size:10px;color:#D4943A">→</span><span style="font-size:10px;color:#D4943A;font-weight:500">Optimize batch schedule</span></div></div>
+  <div style="background:rgba(42,62,42,0.4);border-radius:8px;padding:11px;margin-bottom:7px;border:1px solid rgba(80,110,80,0.3);border-left:3px solid #D4943A"><div style="font-size:11px;font-weight:600;color:#F5F0E8;margin-bottom:4px">POS downtime reported</div><div style="display:flex;align-items:center;gap:5px;padding:3px 8px;background:rgba(212,148,58,0.07);border-radius:4px;width:fit-content"><span style="font-size:10px;color:#D4943A">→</span><span style="font-size:10px;color:#D4943A;font-weight:500">Review terminal status</span></div></div>
+  <div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(200,192,176,0.3);margin-top:14px;margin-bottom:8px">Mortgage Tools</div>
+  <div style="background:rgba(42,62,42,0.4);border-radius:8px;padding:12px;border:1px solid rgba(80,110,80,0.3)"><div style="font-size:11px;font-weight:600;color:#F5F0E8;margin-bottom:8px">Loan Calculator</div><div style="display:flex;gap:4px"><div style="flex:1;text-align:center"><div style="height:3px;background:#D4943A;border-radius:2px;margin-bottom:4px"></div><div style="font-size:8px;color:#D4943A;font-family:'DM Mono',monospace">Calc</div></div><div style="flex:1;text-align:center"><div style="height:3px;background:#D4943A;border-radius:2px;margin-bottom:4px"></div><div style="font-size:8px;color:#D4943A;font-family:'DM Mono',monospace">Apply</div></div><div style="flex:1;text-align:center"><div style="height:3px;background:rgba(200,192,176,0.3);border-radius:2px;margin-bottom:4px"></div><div style="font-size:8px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace">Status</div></div></div></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="label">User Problem</div>
+  <div class="grid-2">
+  <div>
+    <div class="sub-label">Persona</div>
+    <p class="persona">Small business merchants and prospective homebuyers using Wells Fargo's digital tools to make informed financial decisions.</p>
+    <div class="quote">"I can see all my numbers but I don't know what to do with them."</div>
+  </div>
+  <div class="pain"><div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">01</div><p>Dashboard presented raw data without actionable insights</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">02</div><p>Pain points were known but solutions weren't surfaced in context</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">03</div><p>Mortgage calculator existed in isolation from the loan journey</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">04</div><p>System design lacked cohesion between related financial tools</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">User Journey</div>
+  <div class="grid-5"><div class="journey-card card">
+  <div class="num">01</div>
+  <div class="stage">Login</div>
+  <p class="desc">Accesses merchant services dashboard</p>
+  <div class="feel">Routine</div>
+  <div class="touch">Dashboard home</div>
+</div>
+<div class="journey-card card">
+  <div class="num">02</div>
+  <div class="stage">Analyze</div>
+  <p class="desc">Reviews business metrics and trends</p>
+  <div class="feel">Focused</div>
+  <div class="touch">Data panels</div>
+</div>
+<div class="journey-card gold-card highlight">
+  <div class="num">03</div>
+  <div class="stage">Identify</div>
+  <p class="desc">Spots issues flagged by pain point system</p>
+  <div class="feel">Alert</div>
+  <div class="touch">Pain point cards</div>
+</div>
+<div class="journey-card card">
+  <div class="num">04</div>
+  <div class="stage">Act</div>
+  <p class="desc">Takes contextual action on insights</p>
+  <div class="feel">Decisive</div>
+  <div class="touch">Action buttons</div>
+</div>
+<div class="journey-card card">
+  <div class="num">05</div>
+  <div class="stage">Track</div>
+  <p class="desc">Monitors outcomes and progress</p>
+  <div class="feel">Confident</div>
+  <div class="touch">Progress tracking</div>
+</div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">Research</div>
+  <div class="grid-2">
+  <div><div class="sub-label">Methods</div><div class="method"><span class="dot"></span><span>Merchant dashboard usability testing</span></div><div class="method"><span class="dot"></span><span>Pain point mapping with customer service data</span></div><div class="method"><span class="dot"></span><span>System design audit of mortgage tools</span></div><div class="method"><span class="dot"></span><span>Competitive benchmarking of fintech dashboards</span></div></div>
+  <div><div class="sub-label">Key Findings</div><div class="stat"><span class="stat-num">3×</span><span class="stat-desc">More time finding info than acting on it</span></div><div class="stat"><span class="stat-num">28%</span><span class="stat-desc">Reduced drop-off with connected tools</span></div><div class="stat"><span class="stat-num">40%</span><span class="stat-desc">Improved task completion with simplified IA</span></div><div class="stat"><span class="stat-num">1:1</span><span class="stat-desc">Pain points mapped to missing features</span></div></div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">Notes &amp; Reflection</div>
+  <div class="grid-2">
+  <div>
+    <div class="sub-label">Gaps Identified</div>
+    <div class="gap"><span class="bang">!</span>Pain points were identified but the solution layer was too abstract</div><div class="gap"><span class="bang">!</span>Test → Analyze → Believe cycle lacked clear success metrics</div><div class="gap"><span class="bang">!</span>Mortgage calculator redesigned in isolation from the application flow</div><div class="gap"><span class="bang">!</span>System connections needed stronger information architecture</div>
+  </div>
+  <div>
+    <div class="sub-label">How I'd Improve Today</div>
+    <div class="gold-card" style="margin-bottom:20px">
+      <p style="font-size:15px;line-height:1.8">I'd take a <strong style='color:#F5F0E8'>systems-first approach</strong>: the mortgage calculator becomes a connected node, not an isolated tool. The dashboard would center on <strong style='color:#F5F0E8'>decision moments</strong> rather than data displays. <strong style='color:#F5F0E8'>Audit + Connect + Simplify + Audit</strong> as a continuous framework.</p>
+    </div>
+    <div class="then-now">
+      <div class="card tn-card">
+        <div class="tn-label" style="color:rgba(200,192,176,0.3)">Then</div>
+        <div class="tn-text" style="color:rgba(200,192,176,0.5)">Isolated tools, data-heavy dashboards</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="card tn-card" style="border-top:2px solid #D4943A">
+        <div class="tn-label" style="color:#D4943A">Now</div>
+        <div class="tn-text" style="color:#D4CCBC">Connected systems, decision-first design</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

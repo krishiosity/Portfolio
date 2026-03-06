@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandbox — Krishiosity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+::selection{background:rgba(212,148,58,0.25);color:#F5F0E8}
+body{
+  font-family:'Inter',sans-serif;
+  background:#1A2B1A;
+  color:#D4CCBC;
+  line-height:1.6;
+}
+/* NAV */
+.cs-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;border-bottom:1px solid rgba(80,110,80,0.3);
+  position:sticky;top:0;background:rgba(26,43,26,0.95);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:100;
+}
+.cs-nav a{
+  font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;
+  letter-spacing:0.15em;color:rgba(200,192,176,0.4);text-decoration:none;
+  transition:color 0.2s;
+}
+.cs-nav a:hover{color:#D4943A}
+.cs-nav .brand{color:#F5F0E8;font-size:12px;font-weight:500;letter-spacing:0.25em}
+.cs-nav .links{display:flex;gap:24px}
+/* SECTIONS */
+section{padding:56px 64px;border-bottom:1px solid rgba(80,110,80,0.3)}
+section:last-child{border-bottom:none;padding-bottom:80px}
+.label{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:400;
+  text-transform:uppercase;letter-spacing:0.2em;color:#D4943A;margin-bottom:16px;
+}
+h1{
+  font-family:'Playfair Display',serif;font-size:52px;font-weight:800;
+  color:#F5F0E8;line-height:1.1;margin-bottom:10px;
+}
+h1 em{color:#D4943A;font-weight:700;font-style:italic}
+.subtitle{font-size:18px;color:rgba(200,192,176,0.5);max-width:580px;line-height:1.7;font-weight:300}
+.meta-cards{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap}
+.meta-card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:10px;padding:14px 20px;
+}
+.meta-card .mc-label{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;color:rgba(200,192,176,0.3);margin-bottom:4px;
+}
+.meta-card .mc-value{font-size:15px;font-weight:600;color:#F5F0E8}
+/* CARDS */
+.card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:12px;padding:28px;
+}
+.gold-card{
+  background:rgba(42,62,42,0.55);border:1px solid rgba(80,110,80,0.3);
+  border-radius:12px;padding:28px;border-top:3px solid #D4943A;
+}
+.num{
+  font-family:'DM Mono',monospace;font-size:28px;font-weight:300;
+  color:rgba(200,192,176,0.3);line-height:1;
+}
+.sub-label{
+  font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;
+  letter-spacing:0.15em;color:rgba(200,192,176,0.3);margin-bottom:14px;
+}
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+/* BROWSER MOCKUP */
+.browser{
+  background:rgba(15,22,15,0.6);border-radius:14px;
+  border:1px solid rgba(80,110,80,0.3);overflow:hidden;
+}
+.browser-chrome{
+  padding:10px 16px;border-bottom:1px solid rgba(80,110,80,0.3);
+  display:flex;align-items:center;gap:8px;
+}
+.browser-dots{display:flex;gap:6px}
+.browser-dots span{width:10px;height:10px;border-radius:50%}
+.browser-url{
+  flex:1;background:rgba(42,62,42,0.4);border-radius:6px;padding:5px 14px;
+  font-size:11px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace;
+}
+.browser-body{display:grid;height:320px}
+/* JOURNEY */
+.journey-card{text-align:center}
+.journey-card .stage{
+  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+  color:#F5F0E8;margin:10px 0 6px;
+}
+.journey-card .desc{font-size:12px;color:rgba(200,192,176,0.5);line-height:1.55;margin-bottom:14px}
+.journey-card .feel{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;margin-bottom:8px;
+}
+.journey-card .touch{
+  padding:5px 8px;border-radius:5px;font-family:'DM Mono',monospace;
+  font-size:9px;color:rgba(200,192,176,0.3);display:inline-block;
+  background:rgba(42,62,42,0.4);
+}
+.journey-card.highlight .feel{color:#D4943A}
+.journey-card.highlight .touch{background:rgba(212,148,58,0.08)}
+/* STATS */
+.stat{
+  padding:14px 0;border-bottom:1px solid rgba(80,110,80,0.3);
+  display:flex;gap:16px;align-items:baseline;
+}
+.stat:last-child{border-bottom:none}
+.stat-num{
+  font-family:'Playfair Display',serif;font-size:30px;font-weight:700;
+  color:#D4943A;min-width:54px;
+}
+.stat-desc{font-size:14px;color:rgba(200,192,176,0.5);line-height:1.55}
+/* METHODS */
+.method{display:flex;gap:12px;margin-bottom:16px;align-items:center}
+.method .dot{width:4px;height:4px;border-radius:50%;background:#D4943A;flex-shrink:0}
+.method span{font-size:14px;color:#D4CCBC;line-height:1.5}
+/* GAPS */
+.gap{
+  padding:14px 0;border-bottom:1px solid rgba(80,110,80,0.3);
+  font-size:14px;color:#D4CCBC;line-height:1.65;display:flex;gap:10px;
+}
+.gap .bang{color:#D4943A;font-family:'DM Mono',monospace;font-size:10px;margin-top:3px;flex-shrink:0}
+/* PAIN POINTS */
+.pain{display:flex;flex-direction:column;gap:10px}
+.pain-item{display:flex;gap:16px;align-items:flex-start}
+.pain-item p{font-size:14px;color:#D4CCBC;line-height:1.65;padding-top:6px}
+/* QUOTE */
+.quote{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:22px;
+  color:rgba(200,192,176,0.5);line-height:1.55;padding:24px 0;
+  border-top:1px solid rgba(80,110,80,0.3);
+}
+/* THEN/NOW */
+.then-now{display:flex;gap:10px;margin-top:20px}
+.then-now .tn-card{flex:1;padding:16px 20px}
+.then-now .arrow{display:flex;align-items:center;color:rgba(200,192,176,0.3)}
+.tn-label{
+  font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;
+  letter-spacing:0.1em;margin-bottom:6px;
+}
+.tn-text{font-size:13px}
+/* ANIMATE */
+.reveal{opacity:0;transform:translateY(24px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* PERSONA */
+.persona{font-size:16px;font-weight:500;color:#F5F0E8;line-height:1.6;margin-bottom:28px}
+/* RESPONSIVE */
+@media(max-width:900px){
+  section{padding:40px 24px}
+  .grid-2,.grid-5{grid-template-columns:1fr}
+  h1{font-size:36px}
+  .cs-nav{padding:12px 24px}
+  .cs-nav .links{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="cs-nav">
+  <a href="https://krishiosity.com" class="brand">KRISHIOSITY</a>
+  <div class="links">
+    <a href="https://krishiosity.com#about">About</a>
+    <a href="https://krishiosity.com#work">Work</a>
+    <a href="https://krishiosity.com#experiments">Experiments</a>
+  </div>
+</nav>
+
+<section>
+  <div class="label">Experiment</div>
+  <h1>Design <em>Sandbox</em></h1>
+  <p class="subtitle">An agent-powered environment for seamless context switching — keeping designers in flow while the system handles the overhead.</p>
+  <div class="meta-cards"><div class="meta-card"><div class="mc-label">Type</div><div class="mc-value">Experiment</div></div><div class="meta-card"><div class="mc-label">Domain</div><div class="mc-value">Agent Systems</div></div><div class="meta-card"><div class="mc-label">Theme</div><div class="mc-value">Context Switching</div></div></div>
+</section>
+
+<section class="reveal">
+  <div class="label">Product Visual</div>
+  <div class="browser">
+    <div class="browser-chrome">
+      <div class="browser-dots"><span style="background:#FF5F57"></span><span style="background:#FFBD2E"></span><span style="background:#28C840"></span></div>
+      <div class="browser-url">sandbox.experiment.app</div>
+    </div>
+    <div class="browser-body" style="grid-template-columns:180px 1fr 200px">
+      
+<div style="border-right:1px solid rgba(80,110,80,0.3);padding:14px">
+  <div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(200,192,176,0.3);margin-bottom:14px">Feed</div>
+  <div style="background:rgba(42,62,42,0.5);border-radius:6px;padding:10px;margin-bottom:6px;border:1px solid rgba(80,110,80,0.3)"><div style="height:5px;width:60%;background:rgba(212,148,58,0.25);border-radius:3px;margin-bottom:5px"></div><div style="height:3px;width:85%;background:rgba(80,110,80,0.2);border-radius:2px;margin-bottom:3px"></div><div style="height:3px;width:55%;background:rgba(80,110,80,0.15);border-radius:2px"></div></div>
+  <div style="background:rgba(42,62,42,0.5);border-radius:6px;padding:10px;margin-bottom:6px;border:1px solid rgba(80,110,80,0.3)"><div style="height:5px;width:70%;background:rgba(80,110,80,0.3);border-radius:3px;margin-bottom:5px"></div><div style="height:3px;width:85%;background:rgba(80,110,80,0.2);border-radius:2px;margin-bottom:3px"></div><div style="height:3px;width:55%;background:rgba(80,110,80,0.15);border-radius:2px"></div></div>
+  <div style="background:rgba(42,62,42,0.5);border-radius:6px;padding:10px;margin-bottom:6px;border:1px solid rgba(80,110,80,0.3)"><div style="height:5px;width:80%;background:rgba(80,110,80,0.3);border-radius:3px;margin-bottom:5px"></div><div style="height:3px;width:85%;background:rgba(80,110,80,0.2);border-radius:2px;margin-bottom:3px"></div><div style="height:3px;width:55%;background:rgba(80,110,80,0.15);border-radius:2px"></div></div>
+  <div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(200,192,176,0.3);margin-top:14px;margin-bottom:10px">Notes</div>
+  <div style="background:rgba(212,148,58,0.06);border-radius:4px;padding:8px;margin-bottom:5px;border-left:2px solid rgba(212,148,58,0.25)"><div style="height:3px;width:75%;background:rgba(212,148,58,0.15);border-radius:2px;margin-bottom:3px"></div><div style="height:3px;width:45%;background:rgba(212,148,58,0.1);border-radius:2px"></div></div>
+</div>
+<div style="padding:16px;display:flex;flex-direction:column">
+  <div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(200,192,176,0.3);margin-bottom:10px">Design Sandbox</div>
+  <div style="flex:1;background:rgba(42,62,42,0.3);border-radius:10px;border:1px solid rgba(80,110,80,0.3);display:flex;align-items:center;justify-content:center">
+    <div style="width:140px;height:95px;border:1.5px solid rgba(212,148,58,0.3);border-radius:8px;background:rgba(212,148,58,0.05);padding:10px">
+      <div style="height:5px;width:55%;background:rgba(212,148,58,0.22);border-radius:2px;margin-bottom:6px"></div>
+      <div style="height:3px;width:85%;background:rgba(212,148,58,0.1);border-radius:2px;margin-bottom:4px"></div>
+      <div style="height:3px;width:65%;background:rgba(212,148,58,0.1);border-radius:2px;margin-bottom:8px"></div>
+      <div style="height:30px;background:rgba(212,148,58,0.05);border-radius:4px"></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:5px;margin-top:10px">
+    <span style="padding:5px 12px;border-radius:5px;background:#D4943A;color:#1A2B1A;font-size:10px;font-family:'DM Mono',monospace;font-weight:500">Extract</span>
+    <span style="padding:5px 12px;border-radius:5px;background:rgba(42,62,42,0.5);color:rgba(200,192,176,0.3);font-size:10px;font-family:'DM Mono',monospace;border:1px solid rgba(80,110,80,0.3)">Experiment</span>
+    <span style="padding:5px 12px;border-radius:5px;background:rgba(42,62,42,0.5);color:rgba(200,192,176,0.3);font-size:10px;font-family:'DM Mono',monospace;border:1px solid rgba(80,110,80,0.3)">Pivot</span>
+  </div>
+</div>
+<div style="border-left:1px solid rgba(80,110,80,0.3);padding:14px">
+  <div style="font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(200,192,176,0.3);margin-bottom:14px">Agents</div>
+  <div style="background:rgba(42,62,42,0.5);border-radius:6px;padding:10px;margin-bottom:6px;border:1px solid rgba(80,110,80,0.3);display:flex;align-items:center;gap:8px"><div style="width:7px;height:7px;border-radius:50%;background:#D4943A"></div><div><div style="font-size:11px;font-weight:500;color:#E8E0D0">Agent Lead</div><div style="font-size:9px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace">Active</div></div></div>
+  <div style="background:rgba(42,62,42,0.5);border-radius:6px;padding:10px;margin-bottom:6px;border:1px solid rgba(80,110,80,0.3);display:flex;align-items:center;gap:8px"><div style="width:7px;height:7px;border-radius:50%;background:#7B9B7B"></div><div><div style="font-size:11px;font-weight:500;color:#E8E0D0">Research</div><div style="font-size:9px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace">Queued</div></div></div>
+  <div style="background:rgba(42,62,42,0.5);border-radius:6px;padding:10px;margin-bottom:6px;border:1px solid rgba(80,110,80,0.3);display:flex;align-items:center;gap:8px"><div style="width:7px;height:7px;border-radius:50%;background:#5B8B6B"></div><div><div style="font-size:11px;font-weight:500;color:#E8E0D0">PNVK</div><div style="font-size:9px;color:rgba(200,192,176,0.3);font-family:'DM Mono',monospace">Idle</div></div></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="label">User Problem</div>
+  <div class="grid-2">
+  <div>
+    <div class="sub-label">Persona</div>
+    <p class="persona">Product designers working across multiple concurrent projects, struggling to maintain context and stay current.</p>
+    <div class="quote">"I spend more time finding information than actually designing."</div>
+  </div>
+  <div class="pain"><div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">01</div><p>Constant context-switching between tools, documents, and feedback channels</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">02</div><p>Losing track of latest updates when switching between projects</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">03</div><p>No centralized way to see design decisions alongside live data</p></div>
+</div>
+<div class="card pain-item" style="padding:18px 22px">
+  <div style="display:flex;gap:16px;align-items:flex-start"><div class="num">04</div><p>Manual effort to synthesize feedback from disparate sources</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">User Journey</div>
+  <div class="grid-5"><div class="journey-card card">
+  <div class="num">01</div>
+  <div class="stage">Discover</div>
+  <p class="desc">Opens sandbox, sees latest feed updates</p>
+  <div class="feel">Curious</div>
+  <div class="touch">Feed view</div>
+</div>
+<div class="journey-card card">
+  <div class="num">02</div>
+  <div class="stage">Explore</div>
+  <p class="desc">Browses agent-curated suggestions & notes</p>
+  <div class="feel">Engaged</div>
+  <div class="touch">Agent cards</div>
+</div>
+<div class="journey-card gold-card highlight">
+  <div class="num">03</div>
+  <div class="stage">Create</div>
+  <p class="desc">Enters design sandbox with full canvas</p>
+  <div class="feel">Focused</div>
+  <div class="touch">Design canvas</div>
+</div>
+<div class="journey-card card">
+  <div class="num">04</div>
+  <div class="stage">Collaborate</div>
+  <p class="desc">Reviews agent conversations & threads</p>
+  <div class="feel">Informed</div>
+  <div class="touch">Agent threads</div>
+</div>
+<div class="journey-card card">
+  <div class="num">05</div>
+  <div class="stage">Iterate</div>
+  <p class="desc">Extracts insights, experiments, pivots</p>
+  <div class="feel">Empowered</div>
+  <div class="touch">Extract → Pivot</div>
+</div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">Research</div>
+  <div class="grid-2">
+  <div><div class="sub-label">Methods</div><div class="method"><span class="dot"></span><span>Contextual inquiry with 12 designers</span></div><div class="method"><span class="dot"></span><span>Tool audit across 5 design teams</span></div><div class="method"><span class="dot"></span><span>Time-motion study of context switching</span></div><div class="method"><span class="dot"></span><span>Competitive analysis of 8 tools</span></div></div>
+  <div><div class="sub-label">Key Findings</div><div class="stat"><span class="stat-num">47</span><span class="stat-desc">Average context switches per designer per day</span></div><div class="stat"><span class="stat-num">23%</span><span class="stat-desc">Productive time lost to re-orienting</span></div><div class="stat"><span class="stat-num">1.4×</span><span class="stat-desc">Faster shipping with shared context tools</span></div><div class="stat"><span class="stat-num">#1</span><span class="stat-desc">No tool connects artifacts to live feedback</span></div></div>
+</div>
+</section>
+
+<section class="reveal">
+  <div class="label">Notes &amp; Reflection</div>
+  <div class="grid-2">
+  <div>
+    <div class="sub-label">Gaps Identified</div>
+    <div class="gap"><span class="bang">!</span>Agent automation mapping unclear — when should agents connect vs. operate independently?</div><div class="gap"><span class="bang">!</span>Extract feature: what's the minimum context for meaningful output?</div><div class="gap"><span class="bang">!</span>Style, taste, and voice extraction from minimal input is technically complex</div><div class="gap"><span class="bang">!</span>Subtask hierarchy between agent types lacked clarity</div>
+  </div>
+  <div>
+    <div class="sub-label">How I'd Improve Today</div>
+    <div class="gold-card" style="margin-bottom:20px">
+      <p style="font-size:15px;line-height:1.8">I'd focus on a <strong style='color:#F5F0E8'>dynamic agent graph</strong> instead of a flat hierarchy — agents connect based on task context. The Extract capability would leverage modern LLMs for minimum-viable-context. The pivot needs a smoother bridge through <strong style='color:#F5F0E8'>progressive disclosure of agent reasoning</strong>.</p>
+    </div>
+    <div class="then-now">
+      <div class="card tn-card">
+        <div class="tn-label" style="color:rgba(200,192,176,0.3)">Then</div>
+        <div class="tn-text" style="color:rgba(200,192,176,0.5)">Flat hierarchy, manual synthesis</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="card tn-card" style="border-top:2px solid #D4943A">
+        <div class="tn-label" style="color:#D4943A">Now</div>
+        <div class="tn-text" style="color:#D4CCBC">Dynamic graphs, LLM-powered extraction</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
